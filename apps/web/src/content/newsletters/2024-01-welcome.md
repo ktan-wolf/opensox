@@ -27,5 +27,21 @@ We're thrilled to have you here! **Opensox AI** is designed to transform how dev
 
 Connect with thousands of developers on our [Discord server](https://discord.gg/37ke8rYnRM) and share your journey.
 
+---
+
+## Want More?
+
+This is a free sample newsletter. **Premium subscribers** get exclusive access to:
+
+- 📰 **Weekly Curated Insights** on open-source jobs and opportunities
+- 💰 **Funding News** and investment trends in the OSS ecosystem
+- 🚀 **Trending Projects** before they go viral
+- 💡 **Expert Tips** from maintainers and core contributors
+- 📊 **Industry Analysis** and deep dives into OSS trends
+
+[**Upgrade to Premium**](/pricing) to unlock the full newsletter archive and stay ahead in the open-source world.
+
+---
+
 **Happy Contributing!**  
 The Opensox Team

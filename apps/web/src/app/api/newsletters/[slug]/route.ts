@@ -16,10 +16,7 @@ marked.setOptions({
 // Cache individual newsletters
 const newsletterCache = new Map<string, { data: any; time: number }>();
 // cache longer in production since newsletter content changes infrequently
-const CACHE_DURATION =
-  process.env.NODE_ENV === "production"
-    ? 3600000
-    : 60000;
+const CACHE_DURATION = process.env.NODE_ENV === "production" ? 3600000 : 60000;
 
 export async function GET(
   _request: Request,
@@ -64,7 +61,11 @@ export async function GET(
     return NextResponse.json(cached.data);
   }
 
-  const newslettersDir = path.join(process.cwd(), "src/content/newsletters");
+  // read from premium directory for paid users
+  const newslettersDir = path.join(
+    process.cwd(),
+    "apps/web/src/content/newsletters-premium"
+  );
   const filePath = path.join(newslettersDir, `${slug}.md`);
 
   try {

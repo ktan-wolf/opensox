@@ -54,7 +54,11 @@ export async function GET() {
     return NextResponse.json(cachedNewsletters);
   }
 
-  const newslettersDir = path.join(process.cwd(), "src/content/newsletters");
+  // read from premium directory for paid users
+  const newslettersDir = path.join(
+    process.cwd(),
+    "apps/web/src/content/newsletters-premium"
+  );
 
   try {
     if (!fs.existsSync(newslettersDir)) {
