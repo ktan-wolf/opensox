@@ -5,11 +5,10 @@ set -e  # Exit immediately on any error
 
 # Use HTTPS with token if available, otherwise try SSH
 if [ -n "$GITHUB_TOKEN" ]; then
-  # Configure git to use token for HTTPS
-  # This allows access to private repositories without SSH setup
-  git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
-  git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:"
-  echo "Configured git to use GitHub token for private repository access"
+  git config --global credential.helper store
+  echo "https://${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+  chmod 600 ~/.git-credentials
+  echo "Configured git credential helper for GitHub token"
 elif [ -n "$GIT_SSH_KEY" ]; then
   # Fallback to SSH if token is not available
   mkdir -p ~/.ssh || { echo "Failed to create ~/.ssh directory" >&2; exit 1; }
