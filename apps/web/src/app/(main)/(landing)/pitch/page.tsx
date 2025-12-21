@@ -1,38 +1,15 @@
-"use client";
 import Footer from "@/components/landing-sections/footer";
 import Header from "@/components/ui/header";
-import { motion } from "framer-motion";
+import PitchInvest from "@/components/pitch/PitchInvest";
 import { CornerDownRight, Target } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect } from "react";
-import PrimaryButton from "@/components/ui/custom-button";
-import PaymentFlow from "@/components/payment/PaymentFlow";
-import { usePathname } from "next/navigation";
 
-const Pitch = () => {
-  const pathname = usePathname();
-  const premiumPlanId = process.env.NEXT_PUBLIC_YEARLY_PREMIUM_PLAN_ID;
-  const planIdOk =
-    typeof premiumPlanId === "string" && premiumPlanId.length > 0;
-
-  const callbackUrl = `${pathname}#invest`;
-
-  useEffect(() => {
-    // handle any hash, not just #invest
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.getElementById(hash.substring(1)); // remove the #
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
-    }
-  }, []);
+export default function PitchPage() {
+  const premiumPlanId = process.env.NEXT_PUBLIC_YEARLY_PREMIUM_PLAN_ID ?? "";
 
   return (
     <>
-      <main className="w-full overflow-hidden flex flex-col items-center justify-center relative">
+      <main className="w-full flex flex-col items-center justify-center relative">
         <Header
           title={
             <>
@@ -42,21 +19,12 @@ const Pitch = () => {
             </>
           }
         />
-        <div className="flex flex-col bg-[#151515]/20 backdrop-blur-xl relative w-full">
+
+        <div className="flex flex-col bg-[#151515] relative w-full">
           {/* Introduction */}
-          <div className="h-full pv relative">
+          <section className="h-full relative">
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.4,
-                }}
-                className="max-w-4xl mx-auto space-y-6 text-text-secondary font-medium lowercase"
-              >
+              <div className="max-w-4xl mx-auto space-y-6 text-text-secondary font-medium lowercase animate-in fade-in slide-in-from-bottom-4 duration-700 motion-reduce:animate-none">
                 <p className="text-lg lg:text-xl">
                   my philosophy to build opensox.ai is simple.
                 </p>
@@ -70,45 +38,27 @@ const Pitch = () => {
                   investors to invest in their startups. likewise, i am writing
                   a pitch for you to invest in opensox.ai.
                 </p>
-              </motion.div>
+              </div>
             </div>
-          </div>
+          </section>
 
           {/* The Pitch */}
-          <div className="h-full relative border-b border-[#252525]">
+          <section className="h-full relative border-b border-[#252525]">
             <div className="py-8 border-b border-[#252525]">
-              <motion.h2
+              <h2
                 id="the-pitch"
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.5,
-                }}
-                className="text-center text-3xl lg:text-4xl tracking-tight font-bold text-brand-purple-light px-4 font-mono"
+                className="scroll-mt-24 text-center text-3xl lg:text-4xl tracking-tight font-bold text-brand-purple-light px-4 font-mono animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100 motion-reduce:animate-none"
               >
                 the pitch
-              </motion.h2>
+              </h2>
             </div>
 
             {/* Mission Statement */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.6,
-                }}
-                className="max-w-4xl mx-auto space-y-4"
-              >
+              <div className="max-w-4xl mx-auto space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150 motion-reduce:animate-none">
                 <h3
                   id="mission-statement"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   mission statement
                 </h3>
@@ -121,25 +71,15 @@ const Pitch = () => {
                   in open source. i&apos;m creating a product that i wish
                   existed 4 years ago when i started doing open source.
                 </p>
-              </motion.div>
+              </div>
             </div>
 
             {/* My Goal */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.7,
-                }}
-                className="max-w-4xl mx-auto space-y-6"
-              >
+              <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 motion-reduce:animate-none">
                 <h3
                   id="my-goal"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   my goal
                 </h3>
@@ -180,25 +120,15 @@ const Pitch = () => {
                   - my goal is to just save your time. my goal is to make you
                   achieve things in 1 year that took me 3.
                 </p>
-              </motion.div>
+              </div>
             </div>
 
             {/* The Plan */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.8,
-                }}
-                className="max-w-4xl mx-auto space-y-6"
-              >
+              <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-250 motion-reduce:animate-none">
                 <h3
                   id="the-plan"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   the plan
                 </h3>
@@ -208,6 +138,7 @@ const Pitch = () => {
                 <p className="text-text-secondary font-medium text-lg lg:text-xl lowercase">
                   here it is:
                 </p>
+
                 <ul className="space-y-4 [&>li]:flex [&>li]:items-start [&>li]:gap-4 [&>li]:text-text-secondary [&>li]:font-medium [&>li]:text-lg [&>li]:lowercase">
                   <li>
                     <Target className="size-5 flex-shrink-0 text-[#a472ea] mt-1" />
@@ -247,82 +178,77 @@ const Pitch = () => {
                     </span>
                   </li>
                 </ul>
+
                 <p className="text-text-secondary font-medium text-lg lg:text-xl pt-4 lowercase">
                   it is just the start, every single day i&apos;m working to
                   bring the best possible service to you.
                 </p>
-              </motion.div>
+              </div>
             </div>
 
             {/* Philosophies */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 0.9,
-                }}
-                className="max-w-4xl mx-auto space-y-8"
-              >
+              <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 motion-reduce:animate-none">
                 <h3
                   id="philosophies"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   philosophies i follow
                 </h3>
 
-                {/* Philosophy #1 */}
                 <div className="space-y-4">
                   <h4
                     id="stay-small-stay-effective"
-                    className="text-xl lg:text-2xl font-medium text-brand-purple-light font-mono"
+                    className="scroll-mt-24 text-xl lg:text-2xl font-medium text-brand-purple-light font-mono"
                   >
                     #1 stay small. stay effective.
                   </h4>
+
                   <div className="space-y-4 text-text-secondary font-medium text-lg lowercase">
                     <p>while building opensox.ai, i had two choices.</p>
                     <p>
                       the first one is &quot;play big. grow huge,&quot; and the
                       second one is &quot;stay small. stay effective&quot;
                     </p>
+
                     <div className="space-y-3 lowercase">
                       <p>
                         <span className="underline decoration-brand-purple-light decoration-2">
                           if i go by the first choice,
                         </span>
-                        <br></br>
-                        <br></br>
+                        <br />
+                        <br />
                         i&apos;ll have to raise funding from the investors, and
                         to keep those investors happy, i&apos;ll have to grow -
                         that&apos;s the only metric they understand.
-                        <br></br>
-                        <br></br>
+                        <br />
+                        <br />
                         and then i&apos;ll have to grow in terms of number of
                         users, monthly volume, etc. and when there will be
                         millions of users, i will not be able to provide the
-                        users the most important thing they need — the genuine
+                        users the most important thing they need - the genuine
                         and authentic help by a human (me) time to time.
-                        <br></br>
-                        <br></br>
+                        <br />
+                        <br />
                         because a human has a limit on how many people he can
                         help in a single day. and this defeats my main mission
                         statement with which i started in the first place.
                       </p>
-                      <div className="border-b border-[#252525] my-4"></div>
+
+                      <div className="border-b border-[#252525] my-4" />
+
                       <p>
                         <span className="underline decoration-brand-purple-light decoration-2">
-                          now the second choice — stay small. stay effective.
+                          now the second choice - stay small. stay effective.
                         </span>
                       </p>
+
                       <p>
                         if i go with this approach, i&apos;ll have to sacrifice
                         those fancy dreams of raising millions, being on the
                         front page of magazines, having millions of users, etc.
-                        <br></br>
-                        <br></br>
+                        <br />
+                        <br />
                         but the good part is i&apos;ll be able to stay genuine
                         and authentic. you will be able to ping me anytime. even
                         tho, i&apos;ll serve a very tiny portion of the users
@@ -330,14 +256,17 @@ const Pitch = () => {
                         no one is forcing me to grow, i could stay small and
                         effective forever.
                       </p>
+
                       <p className="font-bold underline decoration-brand-purple-light decoration-2">
                         so i choose the #2 choice. why?
                       </p>
+
                       <p className="text-brand-purple-light px-4 py-3">
                         because i&apos;d rather choose serving a hundred people
                         by providing them the best value in the market than
                         serving a million with an avg sub-standard product.
                       </p>
+
                       <p className="text-text-tertiary italic">
                         (for the same reasons, i&apos;ve rejected an{" "}
                         <Link
@@ -354,11 +283,10 @@ const Pitch = () => {
                   </div>
                 </div>
 
-                {/* Philosophy #2 */}
                 <div className="space-y-4">
                   <h4
                     id="go-beyond-what-you-promise"
-                    className="text-xl lg:text-2xl font-medium text-brand-purple-light font-mono"
+                    className="scroll-mt-24 text-xl lg:text-2xl font-medium text-brand-purple-light font-mono"
                   >
                     #2 go beyond what you promise.
                   </h4>
@@ -376,25 +304,15 @@ const Pitch = () => {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* The Process */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 1.0,
-                }}
-                className="max-w-4xl mx-auto space-y-6"
-              >
+              <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-350 motion-reduce:animate-none">
                 <h3
                   id="so-how-small"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   so how small?
                 </h3>
@@ -404,7 +322,7 @@ const Pitch = () => {
                   <span className="text-brand-purple-light">
                     5,000 investors in a single year
                   </span>
-                  .{" "}
+                  .
                 </p>
                 <p className="text-text-secondary font-medium text-lg lowercase">
                   that translates to only ~{" "}
@@ -430,25 +348,15 @@ const Pitch = () => {
                 <p className="text-text-primary font-medium text-xl lg:text-2xl lowercase border-2 border-dashed border-brand-purple-light px-4 py-3 rounded-lg inline-block">
                   417 investors. a month. only.
                 </p>
-              </motion.div>
+              </div>
             </div>
 
             {/* What Existing Investors Said */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 1.1,
-                }}
-                className="max-w-4xl mx-auto space-y-6"
-              >
+              <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400 motion-reduce:animate-none">
                 <h3
                   id="testimonials"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   what existing investors said about me?
                 </h3>
@@ -457,8 +365,7 @@ const Pitch = () => {
                     check out{" "}
                     <Link
                       href="/pricing#testimonials"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      prefetch={false}
                       className="text-link hover:text-link-hover underline"
                     >
                       reviews
@@ -466,25 +373,15 @@ const Pitch = () => {
                     from investors who&apos;ve invested.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Questions */}
             <div className="py-8 border-b border-[#252525] px-4 lg:px-[60px]">
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 1.2,
-                }}
-                className="max-w-4xl mx-auto space-y-8"
-              >
+              <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-450 motion-reduce:animate-none">
                 <h3
                   id="questions"
-                  className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
+                  className="scroll-mt-24 text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono"
                 >
                   questions you may have
                 </h3>
@@ -493,7 +390,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="not-beginner"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       i&apos;m not an absolute beginner, so how does subscribing
                       to opensox.ai make sense to me?
@@ -503,8 +400,8 @@ const Pitch = () => {
                       your time. so if you try on your own, that&apos;s good
                       too, but in most cases, you&apos;ll learn through trial
                       and error and it may cost you a lot of time.
-                      <br></br>
-                      <br></br>
+                      <br />
+                      <br />
                       on the other hand, if you invest in opensox.ai,
                       you&apos;ll have someone (me) to whom you can go to
                       anytime and ask for feedback, and i can tell you
@@ -517,7 +414,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="quality-reduce"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       will the quality of your service reduce as you grow?
                     </h4>
@@ -531,7 +428,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="how-opensox-pro-helps"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       how does opensox.ai pro help me?
                     </h4>
@@ -568,16 +465,7 @@ const Pitch = () => {
                         <span>
                           after that, we&apos;ll do weekly sessions where you
                           can ask me anything, and we&apos;ll discuss one
-                          particular topic - last week&apos;s was &quot;
-                          <Link
-                            href="https://www.youtube.com/watch?v=24CdxwRq0PI"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-link hover:text-link-hover underline"
-                          >
-                            learning tech from the first principles
-                          </Link>
-                          &quot;.
+                          particular topic.
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
@@ -593,7 +481,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="time-to-results"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       how much time does it take to get the results?
                     </h4>
@@ -602,18 +490,13 @@ const Pitch = () => {
                       effort you put. but, as per my personal assumption, people
                       who started from zero have started making visible progress
                       within the first month.
-                      <br></br>
-                      <br></br>
-                      for example, satya joined 2 months ago when he was just a
-                      beginner, and now he&apos;s making 3-4 good-quality prs
-                      every week.
                     </p>
                   </div>
 
                   <div className="space-y-3">
                     <h4
                       id="why-trust"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       why should i trust you?
                     </h4>
@@ -630,8 +513,7 @@ const Pitch = () => {
                       i have done so far. and check the{" "}
                       <Link
                         href="/pricing#testimonials"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        prefetch={false}
                         className="text-link hover:text-link-hover underline"
                       >
                         reviews
@@ -643,14 +525,13 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="alternatives"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       are there any alternatives to what you provide?
                     </h4>
                     <p className="text-text-secondary font-medium text-lg lowercase">
                       i haven&apos;t found any so far. either people are selling
-                      the recorded courses or some pseudo tools like
-                      check-ur-github-profile-aura (no hate tho) that don&apos;t
+                      the recorded courses or some pseudo tools that don&apos;t
                       seem to be helpful.
                     </p>
                   </div>
@@ -658,15 +539,13 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="difference-from-course"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       what&apos;s the difference between opensox pro and a
                       course?
                     </h4>
                     <p className="text-text-secondary font-medium text-lg lowercase">
-                      i&apos;ve answered most of it in &quot;how opensox.ai pro
-                      can help me&quot;, but if i have to say the difference in
-                      brief, then a course is like a dumbbell and opensox.ai pro
+                      in brief, a course is like a dumbbell and opensox.ai pro
                       is like a full-fledged gym with a personal trainer (me).
                     </p>
                   </div>
@@ -674,7 +553,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="for-beginners"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       is it for an absolute beginner?
                     </h4>
@@ -686,7 +565,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="when-not-to-invest"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       in what cases shouldn&apos;t i invest in opensox pro?
                     </h4>
@@ -719,7 +598,7 @@ const Pitch = () => {
                   <div className="space-y-3">
                     <h4
                       id="best-in-market"
-                      className="text-xl font-medium text-brand-purple-light font-mono"
+                      className="scroll-mt-24 text-xl font-medium text-brand-purple-light font-mono"
                     >
                       are you the best in the market?
                     </h4>
@@ -741,55 +620,32 @@ const Pitch = () => {
                     i&apos;ll reply within 24 hrs.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* How to Invest */}
             <div
               id="invest"
-              className="py-12 border-b border-[#252525] px-4 lg:px-[60px]"
+              className="scroll-mt-24 py-12 border-b border-[#252525] px-4 lg:px-[60px]"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeOut",
-                  type: "spring",
-                  delay: 1.3,
-                }}
-                className="max-w-2xl mx-auto space-y-8 text-center"
-              >
+              <div className="max-w-2xl mx-auto space-y-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500 motion-reduce:animate-none">
                 <h3 className="text-3xl lg:text-4xl font-medium text-brand-purple-light lowercase font-mono">
                   how to invest in opensox.ai?
                 </h3>
+
                 <div className="flex justify-center">
-                  {planIdOk ? (
-                    <PaymentFlow
-                      planId={premiumPlanId}
-                      planName="Opensox Pro"
-                      description="Annual Subscription"
-                      buttonText="Invest"
-                      buttonClassName="w-full max-w-md"
-                      callbackUrl={callbackUrl}
-                      buttonLocation="pitch_page"
-                    />
-                  ) : (
-                    <Link href="/pricing" className="w-full max-w-md">
-                      <PrimaryButton classname="w-full">
-                        Invest Now
-                      </PrimaryButton>
-                    </Link>
-                  )}
+                  <PitchInvest
+                    premiumPlanId={premiumPlanId}
+                    callbackUrl="/pitch#invest"
+                  />
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
       </main>
+
       <Footer />
     </>
   );
-};
-
-export default Pitch;
+}
