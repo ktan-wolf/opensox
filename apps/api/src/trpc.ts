@@ -1,7 +1,8 @@
-import { initTRPC, TRPCError } from "@trpc/server";
+import { initTRPC, TRPCError, type AnyProcedure } from "@trpc/server";
 import superjson from "superjson";
 import type { Context } from "./context.js";
 import { verifyToken } from "./utils/auth.js";
+import type { User } from "@prisma/client";
 
 const t = initTRPC.context<Context>().create({
   transformer: superjson,
@@ -35,6 +36,10 @@ const isAuthed = t.middleware(async ({ ctx, next }) => {
   }
 });
 
+export type ProtectedContext = Context & { user: User };
+
 export const router = t.router;
 export const publicProcedure = t.procedure;
-export const protectedProcedure:any = t.procedure.use(isAuthed);
+export const protectedProcedure: typeof t.procedure = t.procedure.use(
+  isAuthed
+) as any;

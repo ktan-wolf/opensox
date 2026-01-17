@@ -4,6 +4,7 @@ import { userRouter } from "./user.js";
 import { projectRouter } from "./projects.js";
 import { authRouter } from "./auth.js";
 import { paymentRouter } from "./payment.js";
+import { sessionsRouter } from "./sessions.js";
 import { testimonialRouter } from "./testimonial.js";
 import { z } from "zod";
 
@@ -22,6 +23,7 @@ export const appRouter = router({
   project: projectRouter,
   auth: authRouter,
   payment: paymentRouter,
+  sessions: sessionsRouter,
   testimonial: testimonialRouter,
 });
 
