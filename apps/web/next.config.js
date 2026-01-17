@@ -59,6 +59,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@heroicons/react'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/pro',
+        destination: '/pricing',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig; 
