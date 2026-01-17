@@ -21,7 +21,7 @@ export type SessionWithTopics = Prisma.WeeklySessionGetPayload<{
   };
 }>;
 
-class AuthorizationError extends Error {
+export class AuthorizationError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "AuthorizationError";
