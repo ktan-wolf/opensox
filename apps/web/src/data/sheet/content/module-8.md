@@ -1,8 +1,8 @@
 ---
 id: "module-8"
 name: "Adhoc: How to learn anything fast?"
-videoUrl: ""
-comingSoon: true
+videoUrl: "https://youtu.be/qLulWceLfMs"
+comingSoon: false
 ---
 
 # Adhoc: How to learn anything fast while contributing?
