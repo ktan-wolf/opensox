@@ -349,9 +349,7 @@ export default function SheetPage() {
             30 days of Open Source sheet
           </h2>
           <span className="text-xs text-text-secondary">
-            (i don&apos;t have a marketing budget,
-            <br className="sm:hidden" /> please share this sheet with others 🙏
-            :)
+            (if you like it, please share it with your friends.)
           </span>
         </div>
         <div className="flex items-center md:gap-3 flex-shrink-0">

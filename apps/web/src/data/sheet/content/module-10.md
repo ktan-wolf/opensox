@@ -1,15 +1,9 @@
 ---
 id: "module-10"
-name: "Live fix/implement the issue - 2"
-videoUrl: ""
-comingSoon: true
+name: "How to get the issues assigned?"
+videoUrl: "https://youtu.be/qJTl0s6_RY4"
+comingSoon: false
 ---
 
-Live fix/implement the issue - 2
-
-Live fix/implement the issue - 2
-
-Second live session on fixing and implementing an issue in an OPEN SOURCE project.
-
-Second live session on fixing and implementing an issue in an OPEN SOURCE project.
+This module explains how to get the initial work in open source. Enjoy! This is Ajeet for you.
 
